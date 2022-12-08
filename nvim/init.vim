@@ -5,6 +5,10 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 " }}}
 
+function ResolveLocalName(filename)
+    return fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/vimscript/' . a:filename
+endfunction
+
 " Plugin setup {{{
 call plug#begin(stdpath('data') . '/plugged')
     " Better syntax tree building in Neovim
@@ -66,8 +70,10 @@ call plug#begin(stdpath('data') . '/plugged')
 
     " Colorscheme
     Plug 'dracula/vim'
-    if !empty(glob("vimscript/plugins.vim"))
-        source vimscript/plugins.vim
+
+    let s:path = ResolveLocalName('plugins.vim')
+    if !empty(glob(s:path))
+        exec "source" . s:path
     endif
 " }}}
 
@@ -165,6 +171,7 @@ augroup config_edit_control
 augroup END
 " }}}
 
-if !empty(glob("vimscript/init_ext.vim"))
-    source vimscript/init_ext.vim
+let s:path = ResolveLocalName('init_ext.vim')
+if !empty(glob(s:path))
+    exec "source" . s:path
 endif
