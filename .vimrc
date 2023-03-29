@@ -30,7 +30,7 @@ call plug#end()
 " }}}
 
 " Tagbar key maps {{{
-nmap <leader>tbt <cmd>TagbarToggle<CR>
+nmap <leader>tbt :TagbarToggle<CR><C-w>lzM
 nmap <leader>tbp <cmd>TagbarTogglePause<CR>
 " }}}
 
