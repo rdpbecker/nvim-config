@@ -75,6 +75,19 @@ nnoremap <leader>au :autocmd filetype_
 nnoremap <leader>vgc :vimgrep! /<c-r>//jg
 " Vimgrep from base
 nnoremap <leader>vgd :vimgrep /<c-r>//jg **<cr>
+" Add things around the currently selected text
+" Double quotes
+vnoremap <leader>" <esc>`>a"<esc>`<i"<esc>
+" Single quotes
+vnoremap <leader>' <esc>`>a'<esc>`<i'<esc>
+" Brackets
+vnoremap <leader>( <esc>`>a)<esc>`<i(<esc>
+" Square braces
+vnoremap <leader>[ <esc>`>a]<esc>`<i[<esc>
+" Curly braces
+vnoremap <leader>{ <esc>`>a}<esc>`<i{<esc>
+" Stringify
+vnoremap <leader>jstr <esc>`>a)<esc>`<iJSON.stringify(<esc>
 " }}}
 
 " Fugitive keymaps {{{
@@ -145,7 +158,7 @@ augroup END
 augroup filetype_cpp
     autocmd!
     autocmd FileType cpp nnoremap <buffer> <leader>op <cmd>call Open_pair()<cr>
-    autocmd FileType cpp iabbrev <buffer> log qDebug() << "BLORG" <<;<right>
+    autocmd FileType cpp iabbrev <buffer> lg qDebug() << "BLORG" <<;<right>
 
     " Show information on folds {{{
     autocmd FileType cpp setlocal foldcolumn=1
@@ -183,7 +196,7 @@ augroup END
 " log-specific {{{
 augroup filetype_test_log
     autocmd!
-    autocmd FileType test_log nnoremap <localleader>rm <cmd>g@<Message @d <bar> g@</Message@d<cr>
+    autocmd FileType test_log nnoremap <localleader>rm <cmd>g@<Message\|</Message@d<cr>
 augroup END
 " }}}
 
