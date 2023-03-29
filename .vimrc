@@ -105,6 +105,7 @@ nnoremap <leader>fsh :Gdiffsplit
 " General git things
 nnoremap <leader>gbr <cmd>Git branch<cr>
 nnoremap <leader>gbl <cmd>Git blame<cr>
+nnoremap <leader>gl <cmd>Git log<cr>
 " }}}
 
 " Vim-ql keymaps {{{
@@ -136,13 +137,19 @@ augroup filetype_markdown
     autocmd FileType markdown iabbrev <buffer> bck [Back to Home](index.md)
     autocmd FileType markdown iabbrev <buffer> ch &#10004;
     autocmd FileType markdown iabbrev <buffer> x &#10008;
+    autocmd FileType markdown iabbrev <buffer> qu &#10067;
     autocmd FileType markdown iabbrev <buffer> cam &#128247;
+    autocmd FileType markdown iabbrev <buffer> tst &#128221;
     autocmd FileType markdown iabbrev <buffer> acc [Example\|^.png]<left><left><left><left><left>
     autocmd FileType markdown iabbrev spn </span>
     autocmd FileType markdown iabbrev spg <span style='color:#aaffaa'>
     autocmd FileType markdown iabbrev spy <span style='color:#ffffaa'>
     autocmd FileType markdown iabbrev spr <span style='color:#ffaaaa'>
     autocmd FileType markdown nnoremap <buffer> <localleader>we <cmd>w<cr><cmd>sleep 500m<cr><cmd>e<cr> 
+
+    autocmd FileType markdown vnoremap <leader>` <esc>`>a`<esc>`<i`<esc>
+    autocmd FileType markdown vnoremap <leader>* <esc>`>a*<esc>`<i*<esc>
+    autocmd FileType markdown vnoremap <leader>& <esc>`>a**<esc>`<i**<esc>
 augroup END
 " }}}
 
