@@ -182,7 +182,7 @@ function! Open_pair()
         let a[-1] = substitute(a[-1], ".cpp", ".h", "")
     endif
     echom len(a) join(a, "/")
-    execute "vsp" join([""] + a, "/")
+    execute "vsp" join(a, "/")
 endfunction
 " }}} 
 
