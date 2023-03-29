@@ -39,7 +39,10 @@ call plug#begin(stdpath('data') . '/plugged')
     Plug 'neovim/nvim-lspconfig'
 
     " Easy installation of LSP servers
-    Plug 'williamboman/nvim-lsp-installer'
+    "Plug 'williamboman/nvim-lsp-installer'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+    Plug 'mfussenegger/nvim-lint'
 
     " Back shell checking. Better than the LSP offered by 
     " bash-language-server, which is used by :LspInstall bash
