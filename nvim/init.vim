@@ -107,7 +107,10 @@ nnoremap <leader>ts <cmd>tab split<cr>
 nnoremap <leader>tc <cmd>tabclose<cr>
 
 " Refresh all windows in all tabs
-nnoremap <leader>rf <cmd>bufdo e<cr>
+nnoremap <leader>rff <cmd>bufdo e<cr>
+
+" Refresh the fold markers
+nnoremap <leader>rfm :set foldmethod=marker<cr>:set foldmarker={,}<cr>
 " }}}
 
 colorscheme dracula
