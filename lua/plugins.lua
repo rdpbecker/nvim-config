@@ -81,6 +81,9 @@ return require("packer").startup(function(use)
           {'rafamadriz/friendly-snippets'},
         }
     }
+
+    -- QML Syntax Highlighting
+    use {"peterhoeg/vim-qml"}
 end)
 --
 --    " Jump to/see definitions
