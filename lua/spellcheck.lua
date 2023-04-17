@@ -1,0 +1,6 @@
+vim.cmd("iabbrev retrun return")
+vim.cmd("iabbrev reutrn return")
+vim.cmd("iabbrev ture true")
+vim.cmd("iabbrev flase false")
+vim.cmd("iabbrev rt return")
+vim.cmd("iabbrev unefined undefined")
