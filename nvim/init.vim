@@ -9,92 +9,10 @@ function ResolveLocalName(filename)
     return fnamemodify(resolve(expand('<sfile>:p')), ':h') . '/vimscript/' . a:filename
 endfunction
 
-" Plugin setup {{{
-call plug#begin(stdpath('data') . '/plugged')
-    " Better syntax tree building in Neovim
-    Plug 'nvim-treesitter/nvim-treesitter'
+" Use the normal Vim block cursor instead of the common GUI line cursor
+set guicursor=n-v-c:block-Cursor
 
-    " Jump to/see definitions
-    Plug 'pechorin/any-jump.vim'
-    Plug 'ripxorip/aerojump.nvim', { 'do': ':UpdateRemotePlugins' }
-
-    " Code completion
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-    " Add a Git visualization column
-    Plug 'airblade/vim-gitgutter'
-
-    " Distraction-free coding
-    Plug 'folke/twilight.nvim'
-
-    " Window dimming
-    Plug 'sunjon/shade.nvim'
-
-    " Fuzzy searching and dependencies
-    Plug 'nvim-lua/popup.nvim'
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-
-    " Configuration of LSP servers
-    Plug 'neovim/nvim-lspconfig'
-
-    " Easy installation of LSP servers
-    "Plug 'williamboman/nvim-lsp-installer'
-    Plug 'williamboman/mason.nvim'
-    Plug 'williamboman/mason-lspconfig.nvim'
-    Plug 'mfussenegger/nvim-lint'
-
-    " Back shell checking. Better than the LSP offered by 
-    " bash-language-server, which is used by :LspInstall bash
-    Plug 'itspriddle/vim-shellcheck'
-
-    " Colouring/formatting of LSP stuff
-    Plug 'folke/lsp-colors.nvim'
-    Plug 'folke/trouble.nvim'
-
-    " Icons
-    Plug 'kyazdani42/nvim-web-devicons'
-
-    " Easier commenting
-    Plug 'preservim/nerdcommenter'
-
-    " Tabline formatting
-    Plug 'romgrk/barbar.nvim'
-    Plug 'glepnir/galaxyline.nvim'
-
-    " Colours
-    Plug 'norcalli/nvim-colorizer.lua'
-
-    " File Explorer
-    Plug 'kyazdani42/nvim-tree.lua'
-
-    " Show key bindings
-    Plug 'folke/which-key.nvim'
-
-    " Colorscheme
-
-    " Add a tagbar to the side
-    Plug 'preservim/tagbar'
-
-    " A couple colour schemes
-    "Plug 'evturn/cosmic-barf'
-    Plug 'dracula/vim'
-
-    " Git functionality
-    Plug 'tpope/vim-fugitive'
-
-    " Add a bunch of new mappings
-    Plug 'tpope/vim-unimpaired'
-
-    " Quickfix Bindings
-    Plug 'romainl/vim-qf'
-
-    let s:path = ResolveLocalName('plugins.vim')
-    if !empty(glob(s:path))
-        exec "source" . s:path
-    endif
-call plug#end()
-" }}}
+lua require("plugins")
 
 " Use a semicolon as the custom keymap leader character
 let mapleader=";"
@@ -241,42 +159,18 @@ augroup filetype_gitcommit
 augroup END
 " }}}
 
-" log-specific {{{
-augroup filetype_test_log
-    autocmd!
-    autocmd FileType test_log nnoremap <localleader>rm <cmd>g@<Message\|</Message@d<cr>
-augroup END
-" }}}
-
 " Colouring {{{
 syntax enable
 set termguicolors
 set background=dark
-"colorscheme hotline
-colorscheme cosmic-barf
-"let g:colors_name='cosmic-barf'
+colorscheme dracula
 " }}}
-
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 if !empty(glob("~/.vim/vimrc_ext.vim"))
     source ~/.vim/vimrc_ext.vim
 endif
 
-" Use the normal Vim block cursor instead of the common GUI line
-" cursor
-set guicursor=n-v-c:block-Cursor
-
-" Reduce the update time for git gutter
-set updatetime=200
-
 " General keymaps {{{
-" Keymap for :Texplore because Telescope interferes with :Te and
-" it's annoying.
-" Note: The Texplore command doesn't exist when NvimTree is loaded.
-nnoremap <leader>te <cmd>Texplore<cr>
-
 " Keymap for :tabnew since NvimTree overwrites :Texplore
 nnoremap <leader>tn <cmd>tabnew<cr>
 
@@ -293,21 +187,12 @@ nnoremap <leader>rff <cmd>bufdo e<cr>
 nnoremap <leader>rfm :set foldmethod=marker<cr>:set foldmarker={,}<cr>
 " }}}
 
-colorscheme dracula
-
 " Add keymaps for editing and sourcing the two vimrc files {{{
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>si :source ~/.vimrc<cr>
 nnoremap <leader>ei :vsplit ~/.vimrc<cr>
 " }}}
-
-"" Close buffers automatically for init.vim and .vimrc when leaving them {{{
-"augroup config_edit_control
-"    autocmd!
-"    autocmd BufLeave $MYVIMRC bdelete ~/nvim_config/nvim/init.vim
-"augroup END
-"" }}}
 
 let s:path = ResolveLocalName('init_ext.vim')
 if !empty(glob(s:path))

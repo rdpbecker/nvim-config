@@ -1,5 +1,0 @@
---require'shade'.setup({
---  keys = {
---    toggle           = '<Leader>sst',
---  }
---})
