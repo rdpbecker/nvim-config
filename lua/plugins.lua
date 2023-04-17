@@ -6,7 +6,10 @@ return require("packer").startup(function(use)
     use {"preservim/nerdcommenter"}
 
     -- Better syntax tree building in Neovim
-    use {"nvim-treesitter/nvim-treesitter"}
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate"
+    }
 
     -- Add a Git visualization column
     use {"airblade/vim-gitgutter"}
@@ -29,8 +32,11 @@ return require("packer").startup(function(use)
     }
 
     -- Tabline formatting
-    use {"romgrk/barbar.nvim"}
     use {"glepnir/galaxyline.nvim"}
+
+    -- Buffer managements
+    use {"romgrk/barbar.nvim"}
+    use {"theprimeagen/harpoon"}
 
     -- Show key bindings
     use {"folke/which-key.nvim"}
@@ -49,6 +55,32 @@ return require("packer").startup(function(use)
 
     -- Quickfix Bindings
     use {"romainl/vim-qf"}
+
+    -- Better undoing
+    use {"mbbill/undotree"}
+
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v1.x',
+        requires = {
+          -- LSP Support
+          {'neovim/nvim-lspconfig'},
+          {'williamboman/mason.nvim'},
+          {'williamboman/mason-lspconfig.nvim'},
+
+          -- Autocompletion
+          {'hrsh7th/nvim-cmp'},
+          {'hrsh7th/cmp-buffer'},
+          {'hrsh7th/cmp-path'},
+          {'saadparwaiz1/cmp_luasnip'},
+          {'hrsh7th/cmp-nvim-lsp'},
+          {'hrsh7th/cmp-nvim-lua'},
+
+          -- Snippets
+          {'L3MON4D3/LuaSnip'},
+          {'rafamadriz/friendly-snippets'},
+        }
+    }
 end)
 --
 --    " Jump to/see definitions
@@ -67,13 +99,7 @@ end)
 --    " Fuzzy searching and dependencies (telescope)
 --    Plug 'nvim-lua/popup.nvim'
 --
---    " Configuration of LSP servers
---    Plug 'neovim/nvim-lspconfig'
---
 --    " Easy installation of LSP servers
---    "Plug 'williamboman/nvim-lsp-installer'
---    Plug 'williamboman/mason.nvim'
---    Plug 'williamboman/mason-lspconfig.nvim'
 --    Plug 'mfussenegger/nvim-lint'
 --
 --    " Back shell checking. Better than the LSP offered by 
