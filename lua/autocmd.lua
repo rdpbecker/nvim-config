@@ -6,11 +6,11 @@ autocmd("FileType", {
     group = md_au,
     pattern = "*",
     callback = function()
-        if vim.bo.ft ~= "md" then
+        if vim.bo.ft ~= "markdown" then
             return
         end
 
-        vim.opt_local.spell = 1
+        vim.opt_local.spell = true
         vim.opt_local.spelllang = "en_ca"
 
         vim.cmd("iabbrev <buffer> bck [Back to Home](index.md)")
@@ -79,13 +79,13 @@ autocmd("FileType", {
 local gitcommit_au = vim.api.nvim_create_augroup("filetype_gitcommit", {})
 autocmd("FileType", {
     group = gitcommit_au,
-    pattern = "*.gitcommit",
+    pattern = "*",
     callback = function()
         if vim.bo.ft ~= "gitcommit" then
             return
         end
 
-        vim.opt_local.spell = 1
+        vim.opt_local.spell = true
         vim.opt_local.spelllang = "en_ca"
     end,
 })
