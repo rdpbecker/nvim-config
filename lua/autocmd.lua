@@ -59,7 +59,7 @@ autocmd("FileType", {
         vim.opt_local.foldmethod = "marker"
 
         local bufnr = vim.api.nvim_get_current_buf()
-        local opts = {buffer = bufnr, remap = false}
+        opts = {buffer = bufnr, remap = false}
         --vim.keymap.set("n", "<leader>op", "<cmd>call Open_pair()<cr>", opts)
         vim.cmd('iabbrev <buffer> lg qDebug() << "BLORG" <<;<left>')
 
