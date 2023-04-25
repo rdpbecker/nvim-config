@@ -84,6 +84,9 @@ return require("packer").startup(function(use)
 
     -- QML Syntax Highlighting
     use {"peterhoeg/vim-qml"}
+
+    -- Vim movement practice
+    use {"theprimeagen/vim-be-good"}
 end)
 --
 --    " Jump to/see definitions
