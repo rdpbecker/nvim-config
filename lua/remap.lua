@@ -6,6 +6,12 @@ vim.keymap.set("n", "<leader>w", "<c-w>", opts)
 -- Get out of insert mode
 vim.keymap.set("i", "jk", "<esc>", opts)
 
+-- Center the view when navigating
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- Command for seeing the filetype-specific autocommands for the current file
 vim.keymap.set("n", "<leader>au", ":autocmd filetype_", opts)
 
