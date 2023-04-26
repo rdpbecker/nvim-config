@@ -19,7 +19,7 @@ autocmd("FileType", {
         vim.cmd("iabbrev <buffer> qu &#10067;")
         vim.cmd("iabbrev <buffer> cam &#128247;")
         vim.cmd("iabbrev <buffer> tst &#128221;")
-        vim.cmd("iabbrev <buffer> acc [Example|^.png]<left><left><left><left><left>")
+        vim.cmd("iabbrev <buffer> acc [Example\\|^.png]<left><left><left><left><left>")
         vim.cmd("iabbrev spn </span>")
         vim.cmd("iabbrev spg <span style='color:#aaffaa'>")
         vim.cmd("iabbrev spy <span style='color:#ffffaa'>")
