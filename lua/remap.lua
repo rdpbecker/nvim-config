@@ -36,6 +36,9 @@ vim.keymap.set("n", "<leader>tsp", "<cmd>sp<cr><c-w>T", opts)
 -- Refresh all windows in all tabs
 vim.keymap.set("n", "<leader>rff", "<cmd>bufdo e<cr>", opts)
 
+-- Search the currently selected search term
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- Add keymaps for editing and sourcing the two vimrc files
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<cr>", opts)
 vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC<cr>", opts)
