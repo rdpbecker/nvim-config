@@ -19,3 +19,6 @@ vim.opt.ignorecase = true
 vim.opt.tw = 80
 
 vim.opt.showtabline = 2
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

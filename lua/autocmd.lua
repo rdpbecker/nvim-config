@@ -48,31 +48,28 @@ autocmd("FileType", {
 local cpp_au = vim.api.nvim_create_augroup("filetype_cpp", {})
 autocmd("FileType", {
     group = cpp_au,
-    pattern = "*.cpp",
+    pattern = "*",
     callback = function()
         if vim.bo.ft ~= "cpp" then
             return
         end
 
-        vim.opt_local.foldcolumn = 1
-        vim.opt_local.foldmarker = "{,}"
-        vim.opt_local.foldmethod = "marker"
-
         local bufnr = vim.api.nvim_get_current_buf()
         opts = {buffer = bufnr, remap = false}
-        --vim.keymap.set("n", "<leader>op", "<cmd>call Open_pair()<cr>", opts)
         vim.cmd('iabbrev <buffer> lg qDebug() << "BLORG" <<;<left>')
 
-        --function! Open_pair()
-        --    let a = split(@%, "/")
-        --    if a[-1][-1:] == 'h'
-        --        let a[-1] = substitute(a[-1], ".h", ".cpp", "")
-        --    else
-        --        let a[-1] = substitute(a[-1], ".cpp", ".h", "")
-        --    endif
-        --    echom len(a) join(a, "/")
-        --    execute "vsp" join(a, "/")
-        --endfunction
+        local function Open_pair()
+            local buf_name = vim.api.nvim_buf_get_name(0)
+            local new_file
+            if string.sub(buf_name, -2) == ".h" then
+                new_file = string.sub(buf_name, 1, -3) .. ".cpp"
+            else
+                new_file = string.sub(buf_name, 1, -5) .. ".h"
+            end
+            vim.cmd("vsplit " .. new_file)
+        end
+        vim.api.nvim_create_user_command("OpenPair", Open_pair, { nargs = "?" })
+        vim.keymap.set("n", "<leader>op", function () Open_pair() end, opts)
     end,
 })
 
