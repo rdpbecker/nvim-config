@@ -14,6 +14,13 @@ vim.keymap.set("n", "<leader>fmh", "<cmd>Git mergetool -y<cr>", opts)
 vim.keymap.set("n", "<leader>fsv", ":Gvdiffsplit", opts)
 vim.keymap.set("n", "<leader>fsh", ":Gdiffsplit", opts)
 
+-- Grep on Git tracked files (improvement on <leader>vgd)
+vim.keymap.set("n", "<leader>fgc", ":Ggrep -q <c-r>", opts)
+vim.keymap.set("n", "<leader>fgd", ":Ggrep -q <c-r>/<cr>", opts)
+
+-- Add an empty commit
+vim.keymap.set("n", "<leader>fca", ":Git commit --allow-empty<cr>", opts)
+
 -- General git things
 vim.keymap.set("n", "<leader>gbr", "<cmd>Git branch<cr>", opts)
 vim.keymap.set("n", "<leader>gbl", "<cmd>Git blame<cr>", opts)
