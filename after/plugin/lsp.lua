@@ -70,3 +70,17 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+local util = require 'lspconfig.util'
+require('lspconfig.configs').qmlls = {
+  default_config = {
+    cmd = { 'qmlls' },
+    filetypes = { 'qml' },
+    root_dir = function(fname)
+      return util.find_git_ancestor(fname)
+    end,
+    single_file_support = true,
+  },
+}
+
+require('lspconfig').qmlls.setup({})
