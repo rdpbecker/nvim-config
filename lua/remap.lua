@@ -6,6 +6,10 @@ vim.keymap.set("n", "<leader>w", "<c-w>", opts)
 -- Get out of insert mode
 vim.keymap.set("i", "jk", "<esc>", opts)
 
+-- Swipe down to tab back. Move the original gv to gb.
+vim.keymap.set("n", "gb", "gv", opts)
+vim.keymap.set("n", "gv", "gT", opts)
+
 -- Center the view when navigating
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
