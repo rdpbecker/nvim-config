@@ -24,5 +24,5 @@ vim.keymap.set("n", "<leader>fca", ":Git commit --allow-empty<cr>", opts)
 -- General git things
 vim.keymap.set("n", "<leader>gbr", "<cmd>Git branch<cr>", opts)
 vim.keymap.set("n", "<leader>gbl", "<cmd>Git blame<cr>", opts)
-vim.keymap.set("n", "<leader>gl", "<cmd>Git log<cr>", opts)
+vim.keymap.set("n", "<leader>gl", "<cmd>Git log -n 1000<cr>", opts)
 vim.keymap.set("n", "<leader>gp", "<cmd>Git push<cr>", opts)
