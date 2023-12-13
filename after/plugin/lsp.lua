@@ -84,3 +84,7 @@ require('lspconfig.configs').qmlls = {
 }
 
 require('lspconfig').qmlls.setup({})
+
+-- Add commands for enabling/disabling diagnostics so that we can enable QML LSP
+vim.api.nvim_create_user_command("DiagOn", "lua vim.diagnostic.enable()", {})
+vim.api.nvim_create_user_command("DiagOff", "lua vim.diagnostic.disable()", {})
