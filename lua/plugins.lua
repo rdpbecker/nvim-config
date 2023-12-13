@@ -11,6 +11,7 @@ return require("packer").startup(function(use)
         run = ":TSUpdate"
     }
     use { "nvim-treesitter/nvim-treesitter-context" }
+    use { "nvim-treesitter/playground" }
 
     -- Add a Git visualization column
     use {"airblade/vim-gitgutter"}
