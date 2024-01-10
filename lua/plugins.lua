@@ -86,6 +86,9 @@ return require("packer").startup(function(use)
 
     -- Vim movement practice
     use {"theprimeagen/vim-be-good"}
+
+    -- Mini helpers
+    use {"echasnovski/mini.nvim", branch="stable"}
 end)
 --
 --    " Jump to/see definitions
