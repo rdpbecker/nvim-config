@@ -89,6 +89,10 @@ return require("packer").startup(function(use)
 
     -- Mini helpers
     use {"echasnovski/mini.nvim", branch="stable"}
+
+    -- WPM counter. The author deprecated the project, so this is local
+    -- while I fix it up.
+    use '~/Projects/wpm.nvim-main/'
 end)
 --
 --    " Jump to/see definitions

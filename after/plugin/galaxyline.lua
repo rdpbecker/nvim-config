@@ -1,6 +1,7 @@
 local condition = require('galaxyline.condition')
 local get_git_dir = require('galaxyline/provider_vcs').get_git_dir
 local vcs = require('galaxyline/provider_vcs')
+local wpm = require('wpm')
 
 function bg(groups, default)
     for i=1, #groups do
@@ -83,10 +84,28 @@ require('galaxyline').section.left = {
 	    }
     },
 
-    {   
+    {
         FileName = {
             provider  = {space, 'FileIcon', 'FileName'},
             condition = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
+            highlight = {COLOURS.sky,COLOURS.background, 'bold'},
+            separator = SEPARATORS.right_sep .. ' ',
+            separator_highlight = {COLOURS.sky,COLOURS.background},
+        }
+    },
+
+    {
+        WPM = {
+            provider  = wpm.wpm,
+            highlight = {COLOURS.sky,COLOURS.background, 'bold'},
+            separator = SEPARATORS.right_sep .. ' ',
+            separator_highlight = {COLOURS.sky,COLOURS.background},
+        }
+    },
+
+    {
+        Graph = {
+            provider  = wpm.historic_graph,
             highlight = {COLOURS.sky,COLOURS.background, 'bold'},
             separator = SEPARATORS.right_sep .. ' ',
             separator_highlight = {COLOURS.sky,COLOURS.background},
